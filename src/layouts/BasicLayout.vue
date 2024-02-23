@@ -12,18 +12,16 @@ import globalHeader from "../components/globalHeader.vue"
         <router-view />
       </a-layout-content>
       <a-layout-footer class="footer">我来组成底部</a-layout-footer>
-      <router-view />
+
     </a-layout>
-    <router-view />
+
   </div>
-  <router-view />
 </template>
 
 <style scoped>
 #basicLayout {}
 
 #basicLayout .header {
-  background-color: blue;
   margin-bottom: 16px;
 }
 
