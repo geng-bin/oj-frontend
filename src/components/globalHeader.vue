@@ -39,7 +39,7 @@ const userStore = useUserStore()
       </a-menu>
     </a-col>
     <a-col flex="100px">
-      <div>{{ userStore.loginUser.userName }}</div>
+      <div>{{ userStore.loginUser?.userName?? "未登录" }}</div>
     </a-col>
   </a-row>
 </template>
