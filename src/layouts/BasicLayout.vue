@@ -28,6 +28,7 @@ import globalHeader from "../components/globalHeader.vue"
 #basicLayout .content {
   background-color: yellow;
   margin-bottom: 16px;
+  padding: 20px;
 }
 
 #basicLayout .footer {
