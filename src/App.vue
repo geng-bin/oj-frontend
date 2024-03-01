@@ -1,19 +1,15 @@
 <script setup lang="ts">
-import { useRouter } from "vue-router";
 import BasicLayout from "./layouts/BasicLayout.vue"
-import { useUserStore } from "./stores/userState";
-const router = useRouter()
-const userStore = useUserStore()
-router.beforeEach((to, from, next) => {
-  console.log(to);
-  if (to.meta.access === 'admin') {
-    if (userStore.loginUser.userRole !== 'admin') {
-      next("/noAuth")
-      return
-    }
-  }
-  next()
+import { onMounted } from "vue";
+/**
+ * 全局初始化函数, 有全局单次调用的代码, 都可以放到这里
+ */
+const doInit = () => {
+  console.log("~~~~~~~~~~~~~~")
+}
 
+onMounted(() => {
+  doInit();
 })
 </script>
 

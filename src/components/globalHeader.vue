@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { routes } from "../router/routes"
-import { computed, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 import { useUserStore } from "../stores/userState";
 import checkAccess from "@/access/checkAccess";
 import ACCESS_ENUM from "@/access/accessEnum";
@@ -21,7 +21,7 @@ router.afterEach((to) => {
   selectedKeys.value = [to.path]
 })
 
-const loginUser = userStore.loginUser
+let loginUser = userStore.getLoginUser()
 //展示的菜单数组
 const visableRoutes = computed(() => {
   return routes.filter((item, index) => {
@@ -36,16 +36,17 @@ const visableRoutes = computed(() => {
   })
 })
 
-setTimeout(() => {
-  userStore.loginUser.userName = "昼锦"
-  userStore.loginUser.userRole = ACCESS_ENUM.ADMIN
-}, 2000);
+// setTimeout(() => {
+//   loginUser.userName = "昼锦"
+//   loginUser.userRole = ACCESS_ENUM.ADMIN
+// }, 2000);
 
 // setTimeout(() => {
-//   userStore.loginUser = {
+//   Object.assign(loginUser, {
 //     userName: "昼锦",
 //     userRole: ACCESS_ENUM.ADMIN
-//   }
+//   })
+
 // }, 2000);
 
 </script>
@@ -66,7 +67,7 @@ setTimeout(() => {
       </a-menu>
     </a-col>
     <a-col flex="100px">
-      <div>{{ userStore.loginUser?.userName ?? "未登录" }} {{ userStore.loginUser?.userRole }}</div>
+      <div>{{ loginUser?.userName ?? "未登录" }} {{ loginUser?.userRole }}</div>
     </a-col>
   </a-row>
 </template>

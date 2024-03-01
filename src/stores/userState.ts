@@ -2,20 +2,34 @@
 import { reactive } from 'vue'
 import { defineStore } from 'pinia'
 import ACCESS_ENUM from '@/access/accessEnum'
-
-export const useUserStore = defineStore('userState', () => {
-  const loginUser = reactive({
-    userName: "未登录",
-    userRole: ACCESS_ENUM.NOT_LOGIN
-  })
-
-  const getLoginUser = (() => {
-    loginUser.userName="昼锦"
-  })
+import {UserControllerService} from "../../generated/services/UserControllerService"
   
-  const updateUser = ((userName: string) => {
-    loginUser.userName = userName
+export const useUserStore = defineStore('userState', () => {
+  let loginUser = reactive({
+    userName: "未登录",
+    
   })
 
-  return { loginUser, getLoginUser, updateUser }
+  const getLoginUser = async () => {
+    //从后端获取登录信息
+    const res = await UserControllerService.getLoginUserUsingGet();
+    console.log("--------",res);
+    
+    if (res.code === 0) {
+      loginUser = updateUser(res.data);
+    } else {
+      loginUser = updateUser({
+        ...loginUser,
+        userRole: ACCESS_ENUM.NOT_LOGIN
+      })
+    }
+    return loginUser;
+  }
+  
+  const updateUser = ((user: any) => {
+    loginUser = user
+    return loginUser
+  })
+
+  return { getLoginUser, updateUser }
 })
