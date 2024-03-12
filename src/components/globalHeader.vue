@@ -21,10 +21,10 @@ router.afterEach((to) => {
   selectedKeys.value = [to.path]
 })
 
-let loginUser = userStore.getLoginUser()
+let loginUser = userStore.loginUser
 //展示的菜单数组
 const visableRoutes = computed(() => {
-  return routes.filter((item, index) => {
+  return routes.filter((item) => {
     if (item.meta?.hideInMenu) {
       return false;
     }

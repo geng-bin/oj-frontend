@@ -5,31 +5,31 @@ import ACCESS_ENUM from '@/access/accessEnum'
 import {UserControllerService} from "../../generated/services/UserControllerService"
   
 export const useUserStore = defineStore('userState', () => {
-  let loginUser = reactive({
+  const loginUser = reactive({
     userName: "未登录",
-    
+    userRole: ACCESS_ENUM.NOT_LOGIN
   })
 
   const getLoginUser = async () => {
     //从后端获取登录信息
     const res = await UserControllerService.getLoginUserUsingGet();
-    console.log("--------",res);
+    // console.log("--------",res);
     
     if (res.code === 0) {
-      loginUser = updateUser(res.data);
+      updateUser(res.data);
     } else {
-      loginUser = updateUser({
-        ...loginUser,
+      updateUser({
+        userName: "未登录",
         userRole: ACCESS_ENUM.NOT_LOGIN
       })
     }
+    // console.log("获取登录用户 ", loginUser);
     return loginUser;
   }
   
   const updateUser = ((user: any) => {
-    loginUser = user
-    return loginUser
+    Object.assign(loginUser, user)
   })
 
-  return { getLoginUser, updateUser }
+  return {loginUser, getLoginUser, updateUser }
 })
