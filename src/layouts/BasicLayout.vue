@@ -4,14 +4,14 @@ import globalHeader from "../components/globalHeader.vue"
 
 <template>
   <div id="basicLayout">
-    <a-layout style="height: 400px;">
+    <a-layout>
       <a-layout-header class="header">
         <globalHeader />
       </a-layout-header>
       <a-layout-content class="content">
         <router-view />
       </a-layout-content>
-      <a-layout-footer class="footer">我来组成底部</a-layout-footer>
+      <a-layout-footer class=" footer">我来组成底部</a-layout-footer>
 
     </a-layout>
 
@@ -26,7 +26,7 @@ import globalHeader from "../components/globalHeader.vue"
 }
 
 #basicLayout .content {
-  background-color: yellow;
+  /* background-color: slategray; */
   margin-bottom: 16px;
   padding: 20px;
 }
@@ -34,7 +34,7 @@ import globalHeader from "../components/globalHeader.vue"
 #basicLayout .footer {
   background-color: gray;
   padding: 16px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;

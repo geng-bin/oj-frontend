@@ -7,6 +7,8 @@ import ACCESS_ENUM from '@/access/accessEnum';
 import UserLogin from '@/views/user/UserLoginView.vue';
 import UserRegiste from '@/views/user/UserRegisteView.vue';
 import UserLayout from '@/layouts/UserLayout.vue';
+import AddQuestion from '@/views/user/question/AddQuestionView.vue';
+import ManageQuestion from '@/views/user/question/ManageQuestionView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +34,30 @@ const router = createRouter({
         ]
       },
   
+      {
+          path: "/add/questiuon",
+          name: "创建题目",
+          component: AddQuestion,
+            // meta: {
+            //   access: ACCESS_ENUM.ADMIN
+            // }
+    },
+    {
+        path: "/manage/questiuon",
+        name: "管理题目",
+        component: ManageQuestion,
+          // meta: {
+          //   access: ACCESS_ENUM.ADMIN
+          // }
+    },
+    {
+        path: "/update/question",
+        name: "更新题目",
+        component: AddQuestion,
+          // meta: {
+          //   access: ACCESS_ENUM.ADMIN
+          // }
+    },
       {
           path: "/",
           name: "浏览题目",
