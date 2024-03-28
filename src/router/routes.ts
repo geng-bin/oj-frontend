@@ -38,53 +38,62 @@ const router = createRouter({
           path: "/add/questiuon",
           name: "创建题目",
           component: AddQuestion,
-            // meta: {
-            //   access: ACCESS_ENUM.ADMIN
-            // }
+            meta: {
+              access: ACCESS_ENUM.USER
+            }
     },
     {
         path: "/manage/questiuon",
         name: "管理题目",
         component: ManageQuestion,
-          // meta: {
-          //   access: ACCESS_ENUM.ADMIN
-          // }
+          meta: {
+            access: ACCESS_ENUM.ADMIN
+          }
     },
     {
         path: "/update/question",
         name: "更新题目",
         component: AddQuestion,
-          // meta: {
-          //   access: ACCESS_ENUM.ADMIN
-          // }
+          meta: {
+            access: ACCESS_ENUM.USER,
+            hideInMenu: true
+          }
     },
       {
           path: "/",
           name: "浏览题目",
           component: HelloWorld,
-      }, {
-          path: "/about",
-          name: "关于",
-          component: About,
-      }, {
-          path: '/admin',
-          name: "admin",
-          component: Admin,
-          meta: {
-            access: ACCESS_ENUM.ADMIN
-          }
-      } ,{
+    },
+      {
           path: '/noAuth',
           name: "无权限",
-          component: NoAuthView,  
-      } ,{
-          path: '/hide',
-          name: "隐藏页面",
-          component: NoAuthView,  
+        component: NoAuthView,  
           meta: {
-            hideInMenu: true
-          }
-      } 
+          hideInMenu: true
+        },
+    },
+    //   {
+    //       path: "/about",
+    //       name: "关于",
+    //       component: About,
+    // },
+    // {
+    //       path: '/admin',
+    //       name: "admin",
+    //       component: Admin,
+    //       meta: {
+    //         access: ACCESS_ENUM.ADMIN
+    //       }
+    // },
+    
+    // {
+    //       path: '/hide',
+    //       name: "隐藏页面",
+    //       component: NoAuthView,  
+    //       meta: {
+    //         hideInMenu: true
+    //       }
+    //   } 
     
   ]
 })

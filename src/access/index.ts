@@ -4,8 +4,6 @@ import ACCESS_ENUM from "./accessEnum";
 import checkAccess from "./checkAccess";
 
 
-
-
 router.beforeEach((to, from, next) => {
     const userStore = useUserStore()
     const loginUser = userStore.loginUser
