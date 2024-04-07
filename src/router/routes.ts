@@ -7,8 +7,9 @@ import ACCESS_ENUM from '@/access/accessEnum';
 import UserLogin from '@/views/user/UserLoginView.vue';
 import UserRegiste from '@/views/user/UserRegisteView.vue';
 import UserLayout from '@/layouts/UserLayout.vue';
-import AddQuestion from '@/views/user/question/AddQuestionView.vue';
-import ManageQuestion from '@/views/user/question/ManageQuestionView.vue';
+import AddQuestion from '@/views/question/AddQuestionView.vue';
+import ManageQuestion from '@/views/question/ManageQuestionView.vue';
+import QuestionsView from '@/views/question/QuestionsView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,7 +34,11 @@ const router = createRouter({
           }
         ]
       },
-  
+  {
+          path: "/questions",
+          name: "浏览题目",
+          component: QuestionsView,
+    },
       {
           path: "/add/questiuon",
           name: "创建题目",
@@ -61,9 +66,10 @@ const router = createRouter({
     },
       {
           path: "/",
-          name: "浏览题目",
-          component: HelloWorld,
+          name: "主页",
+          component: QuestionsView,
     },
+    
       {
           path: '/noAuth',
           name: "无权限",

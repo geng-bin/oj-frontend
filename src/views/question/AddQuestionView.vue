@@ -64,7 +64,8 @@
 
 <script setup lang="ts">
 import MdEditor from '@/components/MdEditor.vue';
-import { QuestionControllerService } from "../../../../generated/services/QuestionControllerService.ts";
+import { QuestionControllerService } from "../../../generated";
+
 import { onMounted, reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import { Message } from '@arco-design/web-vue';

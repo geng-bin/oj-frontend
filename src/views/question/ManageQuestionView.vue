@@ -23,8 +23,8 @@ import { onMounted, ref, watchEffect } from "vue";
 import * as querystring from "querystring";
 import { useRouter } from "vue-router";
 import { Message } from "@arco-design/web-vue";
-import { QuestionControllerService } from "../../../../generated/services/QuestionControllerService";
-import type { Question } from "../../../../generated/models/Question";
+import { QuestionControllerService } from "../../../generated/services/QuestionControllerService";
+import type { Question } from "../../../generated/models/Question";
 
 const dataList = ref([]);
 const total = ref(0);
